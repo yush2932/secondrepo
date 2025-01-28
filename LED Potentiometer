@@ -1,25 +1,25 @@
+int LED=2; // Inititialise variable for LED to correspond with digital port 
 // the setup routine runs once when you press reset:
 void setup() {
-   Serial.begin(9600);
-  
-  // Set pin 13 (LED pin) as output
-  pinMode(2, OUTPUT);
+  // initialize serial communication at 9600 bits per second:
+  pinMode(LED, OUTPUT);
+  Serial.begin(9600);
 }
 
+// the loop routine runs over and over again forever:
 void loop() {
-  // Read the potentiometer value from analog pin A0
-  int potValue = analogRead(A0);
-  
-  // Print the value for debugging
-  Serial.println(potValue);
-  
-  // Check if potentiometer value exceeds 400
-  if (potValue > 400) {
-    digitalWrite(2, HIGH);  // Turn LED on
-  } else {
-    digitalWrite(2, LOW);   // Turn LED off
+  // read the input on analog pin 0:
+  int knobValue = analogRead(A0);
+   // print out the value you read:
+  Serial.println(knobValue);
+  if (knobValue > 400)
+  {
+    digitalWrite(LED, HIGH);
   }
-  
-  // Small delay to stabilize readings
-  delay(100);
+
+  else
+  {
+    digitalWrite(LED, LOW);
+  }
+
 }
